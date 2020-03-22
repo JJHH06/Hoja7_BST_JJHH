@@ -7,6 +7,34 @@ public class BinarySearchTree<K extends Comparable<K>,V> {
 	
 	
 	
+	
+	
+	/**
+     * Add a (possibly duplicate) value to binary search tree
+     *
+     * @post Adds a value to binary search tree
+     * 
+     * @param val A reference to non-null object
+     */
+    public void add(K argument, V association)
+    {
+    	if(node == null) {
+    		node = new ComparableAssociation<K,V>(argument, association);
+    	}
+    	else {
+    		if(argument.compareTo(node.getKey())<0){
+    			right.add(argument, association);
+    		}
+    		else {
+    			left.add(argument, association);
+    		}
+    	}
+    	
+       
+    }
+    
+    
+	
 	/**
      * @pre 
      * @post 
@@ -15,7 +43,8 @@ public class BinarySearchTree<K extends Comparable<K>,V> {
     {
     	
         // found at root: done
-        if (node.getKey().equals(keyValue)) return node.getValue();
+        if (node.getKey().equals(keyValue))
+        	return node.getValue();
         // look left if less-than, right if greater-than
         if (keyValue.compareTo(node.getKey()) < 0)
         {
@@ -41,29 +70,7 @@ public class BinarySearchTree<K extends Comparable<K>,V> {
     
     
     
-    /**
-     * Add a (possibly duplicate) value to binary search tree
-     *
-     * @post Adds a value to binary search tree
-     * 
-     * @param val A reference to non-null object
-     */
-    public void add(K argument, V association)
-    {
-    	if(node == null) {
-    		node = new ComparableAssociation<K, V>(argument, association);
-    	}
-    	else {
-    		if(argument.compareTo(node.getKey())<0){
-    			right.add(argument, association);
-    		}
-    		else {
-    			left.add(argument, association);
-    		}
-    	}
-    	
-       
-    }
+    
 	
 	
 	

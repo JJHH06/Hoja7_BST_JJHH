@@ -37,10 +37,7 @@ public class ComparableAssociation<K extends Comparable<K>, V> implements Map.En
     
     
     
-    public int compareTo(K comparingKey) {  //es para comparar las llaves 
-        return key.compareTo(comparingKey);
-    }
-    
+
     public ComparableAssociation(K k, V v) {
 		// TODO Auto-generated constructor stub
     	
@@ -48,6 +45,11 @@ public class ComparableAssociation<K extends Comparable<K>, V> implements Map.En
     	
     	this.key = k;
 	}
+    
+    
+    public int compareTo(K comparingKey) {  //es para comparar las llaves 
+        return key.compareTo(comparingKey);
+    }
     
     
     
