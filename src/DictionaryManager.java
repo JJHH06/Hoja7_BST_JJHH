@@ -1,13 +1,19 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-
+/**
+ * 
+ * @author Jose Hurtarte 19707
+ *
+ */
 public class DictionaryManager{  //se utilizo esta clase para probar elevar el nivel de abstraccion un poquito y no tener sobrecargada la Main
 
 	
 	private BinarySearchTree<String,String> diccionario = new BinarySearchTree<String,String>(); 
 	
-	
+	/**
+	 * llena el diccionario/arbol
+	 */
 	public void fillDictionary() {
 		String barra = File.separator;
 		String dir = System.getProperty("user.dir");
@@ -31,13 +37,16 @@ public class DictionaryManager{  //se utilizo esta clase para probar elevar el n
 		}
 
 	}
-	
+	/**
+	 * traduce la frase
+	 * @return la frase ya traducida
+	 */
 	public String translation() {
 		
-		/**
+		
 		String barra = File.separator;
 		String dir = System.getProperty("user.dir");
-		File archivo = new File (dir + barra + "datos.txt");
+		File archivo = new File (dir + barra + "datos.txt.txt");
 		FileReader fr;
 		String linea = "";
 		String listaLinea = "";
@@ -52,13 +61,12 @@ public class DictionaryManager{  //se utilizo esta clase para probar elevar el n
 		}
 		catch (Exception e) {
 		}
-		**/
 		
-		String listaLinea = "The woman asked me to do my homework about my town.";
 		
-	// = listaLinea.replaceAll("//.", "");
-		//String[] words = listaLinea.split(" ");
-		/**String resultado = "";
+		
+		listaLinea = listaLinea.replaceAll("\\.", "");
+		String[] words = listaLinea.split(" ");
+		String resultado = "";
 		String word = "";
 		for (String palabra : words) {
 			word = diccionario.locate(palabra);
@@ -67,12 +75,12 @@ public class DictionaryManager{  //se utilizo esta clase para probar elevar el n
 				
 			}
 			else if(word == null) {
-				resultado += "*"+palabra+"+";
+				resultado += "*"+palabra+"*";
 			}
 			
-		}**/
-		//return resultado+".";
-		return listaLinea;
+		}
+		return resultado+".";
+		
 		
 	}
 	
