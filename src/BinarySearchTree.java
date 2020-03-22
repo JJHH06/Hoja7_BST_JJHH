@@ -8,11 +8,10 @@ public class BinarySearchTree<K extends Comparable<K>,V> {
 	
 	
 	/**
-     * @pre root and value are non-null
-     * @post returned: 1 - existing tree node with the desired value, or
-     *                 2 - the node to which value should be added
+     * @pre 
+     * @post 
      */
-    public V locate(K keyValue)
+    public V locate(K keyValue)     //creo que va a dar error
     {
     	V child;
         // found at root: done
@@ -32,6 +31,45 @@ public class BinarySearchTree<K extends Comparable<K>,V> {
         } else {
             return child;
         }
+    }
+    
+    
+    
+    
+    
+    /**
+     * Add a (possibly duplicate) value to binary search tree
+     *
+     * @post Adds a value to binary search tree
+     * 
+     * @param val A reference to non-null object
+     */
+    public void add(E value)
+    {
+        BinaryTree<E> newNode = new BinaryTree<E>(value,EMPTY,EMPTY);
+
+        // add value to binary search tree 
+        // if there's no root, create value at root
+        if (root.isEmpty())
+        {
+            root = newNode;
+        } else {
+            BinaryTree<E> insertLocation = locate(root,value);
+            E nodeValue = insertLocation.value();
+            // The location returned is the successor or predecessor
+            // of the to-be-inserted value
+            if (ordering.compare(nodeValue,value) < 0) {
+                insertLocation.setRight(newNode);
+            } else {
+                if (!insertLocation.left().isEmpty()) {
+                    // if value is in tree, we insert just before
+                    predecessor(insertLocation).setRight(newNode);
+                } else {
+                    insertLocation.setLeft(newNode);
+                }
+            }
+        }
+        count++;
     }
 	
 	
