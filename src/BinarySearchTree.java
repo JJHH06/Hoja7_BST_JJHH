@@ -1,7 +1,7 @@
 
 public class BinarySearchTree<K extends Comparable<K>,V> {
 
-	private ComparableAssociation<K,V> node;
+	private ComparableAssociation<K,V> node;  //palabra y definicion
 	private BinarySearchTree<K,V> right;
 	private BinarySearchTree<K,V> left;
 	
@@ -12,26 +12,25 @@ public class BinarySearchTree<K extends Comparable<K>,V> {
      * @post returned: 1 - existing tree node with the desired value, or
      *                 2 - the node to which value should be added
      */
-    protected BinaryTree<E> locate(BinaryTree<E> root, E value)
+    public V locate(K keyValue)
     {
-        E rootValue = root.value();
-        BinaryTree<E> child;
-
+    	V child;
         // found at root: done
-        if (rootValue.equals(value)) return root;
+        if (node.getKey().equals(keyValue)) return node.getValue();
         // look left if less-than, right if greater-than
-        if (ordering.compare(rootValue,value) < 0)
+        if (keyValue.compareTo(node.getKey()) < 0)
         {
-            child = root.right();
-        } else {
-            child = root.left();
+            child = right.locate(keyValue);  // se va a la derecha
+        } 
+        else {
+            child = left.locate(keyValue);
         }
         // no child there: not in tree, return this node,
-        // else keep searching
-        if (child.isEmpty()) {
-            return root;
+        
+        if (child == null) {
+            return node.getValue();
         } else {
-            return locate(child, value);
+            return child;
         }
     }
 	

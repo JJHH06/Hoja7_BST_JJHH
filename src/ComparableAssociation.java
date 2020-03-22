@@ -46,7 +46,7 @@ public class ComparableAssociation<K extends Comparable<K>, V> implements Map.En
     	
     	this.value = v;
     	
-    	this.key = key;
+    	this.key = k;
 	}
     
     
