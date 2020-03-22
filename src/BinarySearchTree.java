@@ -11,26 +11,30 @@ public class BinarySearchTree<K extends Comparable<K>,V> {
      * @pre 
      * @post 
      */
-    public V locate(K keyValue)     //creo que va a dar error
+    public V locate(K keyValue)   
     {
-    	V child;
+    	
         // found at root: done
         if (node.getKey().equals(keyValue)) return node.getValue();
         // look left if less-than, right if greater-than
         if (keyValue.compareTo(node.getKey()) < 0)
         {
-            child = right.locate(keyValue);  // se va a la derecha
+        	if(right!=null) {
+        		return right.locate(keyValue);  // se va a la derecha
+        	}
+        	else {
+        		return null;  //por si no lo encuentra en la derecha
+        	}
         } 
-        else {
-            child = left.locate(keyValue);
-        }
-        // no child there: not in tree, return this node,
+        if(left != null) {
+        	
         
-        if (child == null) {
-            return node.getValue();
-        } else {
-            return child;
+        	return left.locate(keyValue);
+        	
         }
+        
+            return null;   //por si no encuentra en la izquierda
+        
     }
     
     
